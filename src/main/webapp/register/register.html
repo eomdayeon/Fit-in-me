@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="author" content="Kodinger">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>My Login Page &mdash; Bootstrap 4 Login Page Snippet</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../login/my-login.css">
+</head>
+<form action="register_action.jsp" method="POST">
+<body class="my-login-page">
+	<section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="brand">
+						<img src="../login/logo.png" alt="bootstrap 4 login page">
+					</div>
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title">Register</h4>
+							<form method="POST" class="my-login-validation" novalidate="">
+								<div class="form-group">
+									<label for="Name">Name</label>
+									<input id="name" type="text" class="form-control" name="name" required autofocus>
+									<div class="invalid-feedback">
+										What's your name?
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="ID">ID</label>
+									<input id="id" type="number" class="form-control" name="id" required>
+									<div class="invalid-feedback">
+										Your ID is invalid
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="Password">Password</label>
+									<input id="password" type="password" class="form-control" name="password" required data-eye>
+									<div class="invalid-feedback">
+										Password is required
+									</div>
+								</div>
+
+                                <div class="form-group">
+									<label for="Address">Address</label>
+									<input id="address" type="text" class="form-control" name="address" required data-eye>
+									<div class="invalid-feedback">
+										Address is required
+									</div>
+								</div>
+
+                                <div class="form-group">
+									<label for="Phone">Phone</label>
+									<input id="phone" type="text" class="form-control" name="address" required data-eye>
+									<div class="invalid-feedback">
+										phone is required
+									</div>
+								</div>
+
+                                <div class="form-group">
+									<label for="Birth">Birth</label>
+									<input id="birth" type="date" class="form-control" name="birth" required data-eye>
+									<div class="invalid-feedback">
+										birth is required
+									</div>
+								</div>
+                                
+                                <div class="form-group">
+                                    <label for="Personal_color">Personal color</label>
+                                    <input type="radio" name="personal_color" value="봄웜">봄웜 
+                                    <input type="radio" name="personal_color" value="가을웜" style="margin-left: 15px;">가을웜
+                                    <input type="radio" name="personal_color" value="겨울쿨" style="margin-left: 15px;">겨울쿨
+                                    <input type="radio" name="personal_color" value="여름쿨" style="margin-left: 15px;">여름쿨
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Skin_type">Skin Type</label> 
+                                    <input type="radio" name="skin_type" value="지성">지성
+                                    <input type="radio" name="skin_type" value="건성" style="margin-left: 15px;">건성
+                                    <input type="radio" name="skin_type" value="중성" style="margin-left: 15px;">중성
+                                    <input type="radio" name="skin_type" value="복합성" style="margin-left: 15px;">복합성
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Sex">Sex</label>
+                                    <input type="radio" name="sex" value="Male">남성
+                                    <input type="radio" name="sex" value="Female" style="margin-left: 15px;">여성
+                                </div>
+
+								<div class="form-group m-0">
+									<button type="submit" class="btn btn-primary btn-block">
+										Register
+									</button>
+								</div>
+								<div class="mt-4 text-center">
+									Already have an account? <a href="../login/login.html">Login</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</form>
+</body>
+</html>
