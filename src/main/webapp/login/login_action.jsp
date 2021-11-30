@@ -15,7 +15,6 @@
    String user = "hr";
    String pass = "hr";
    String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-
    Connection conn = null;
    PreparedStatement pstmt;
    ResultSet rs;
@@ -36,8 +35,8 @@
    }
    else{
 	   HttpSession hs = request.getSession();
-		hs.setAttribute("id", rs.getString(1));
-		out.println("<script>window.location.href='../main/main.html'</script>");
+		hs.setAttribute("id", rs.getString(5));
+		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
    }
    %>
    
