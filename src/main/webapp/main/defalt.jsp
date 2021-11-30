@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Shop Homepage - Cosmetic</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -29,7 +29,7 @@
                 <a class="navbar-brand" href="#!">Fit In Me</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" style="margin-right: 100px; margin-left: 150px;">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
  
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Recommend Product</a></li>
@@ -93,8 +93,36 @@
 	   cos_name.add(rs.getString(2));
 	   price.add(rs.getInt(3));
    }
+   
+   String querycate = "SELECT Catenumber,catename FROM COSCATEGORY ORDER BY catenumber ASC ";
+   
+   pstmt = conn.prepareStatement(querycate);
+   rs = pstmt.executeQuery();
+   
+   ArrayList<Integer> catenumber = new ArrayList<>();
+   ArrayList<String> catename = new ArrayList<>();
+   
+   while(rs.next()){
+	   catenumber.add(rs.getInt(1));
+	   catename.add(rs.getString(2));
+   }
+   
 %>
 <section class="py-5">
+
+	        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style=" margin-left: 79px;">
+                    	<% for (int i=0; i<catenumber.size(); i++){ %>
+                        <li class="nav-item"><a class="nav-link" href="#!"  style="color: black; margin-right: 10px;margin-left: 10px;" > <% out.print(catename.get(i)); %> </a></li>
+                		<% }%>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<%

@@ -27,16 +27,17 @@
    
    String query = "SELECT * FROM CUSTOMER WHERE customer_id = "+id+" AND customer_pwd = '"+ password+"'";
   
+   out.println(query);
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();
    
    if(rs.next()==false){
-	   out.println("<script>alert('잘못된 아이디와 패스워드 입니다.'); history.back(); </script>");
+	   out.println("<script>alert('잘못된 아이디와 패스워드 입니다.'); history.back();</script>");
    }
    else{
 	   HttpSession hs = request.getSession();
 		hs.setAttribute("id", rs.getString(1));
-		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
+		out.println("<script>window.location.href='../main/main.html'</script>");
    }
    %>
    
