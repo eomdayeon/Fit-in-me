@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Cosmetic</title>
+        <title>Cosmetic Category</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -35,15 +35,7 @@
                         <li class="nav-item"><a class="nav-link" href="#!">Recommend Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
-<!--                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
+
                     </ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
@@ -80,7 +72,8 @@
    Class.forName("oracle.jdbc.driver.OracleDriver");
    conn = DriverManager.getConnection(url,user,pass);
    
-   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS ";
+   Integer para = Integer.parseInt(request.getParameter("catenumber"));
+   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS C, COSCATEGORY CO WHERE C.catenum = CO.catenumber AND CO.catenumber = "+ para;
   
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();
