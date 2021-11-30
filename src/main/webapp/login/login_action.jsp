@@ -37,7 +37,7 @@
    else{
 	   HttpSession hs = request.getSession();
 		hs.setAttribute("id", rs.getString(1));
-		out.println("<script>window.location.href='../main/main.html'</script>");
+		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
    }
    %>
    
