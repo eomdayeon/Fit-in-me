@@ -15,7 +15,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         
         <!-- Core theme CSS (includes Bootstrap)-->
-   <!--      <link href="styles.css" rel="stylesheet" /> -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		
@@ -26,13 +25,13 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Fit In Me</a>
+                <a class="navbar-brand" href="defalt.jsp">Fit In Me</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4" style="    margin-left: 100px;margin-right: 120px;">
  
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Cosmetic Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Recommend Product</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="defalt.jsp">Cosmetic Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../recommend/recommend.jsp">Recommend Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
 
@@ -126,8 +125,8 @@
                 </button>
                 <input class='keyword type='text' name='search' maxlength=255 value=""autocomplete="off">
                 <select class='SelecSearch' name='WhichSearch'>
-                    <option id='google' value='google'>Google</option>
-                    <option id='naver' value='naver'>Naver</option>
+                    <option id='Brand' value='Brand'>Brand</option>
+                    <option id='Keyword' value='Keyword'>Keyword</option>
                 </select>
 
             </div>

@@ -9,6 +9,8 @@
 </head>
 <body>	
 	<%
+	
+	
    String serverIP = "localhost";
    String strSID = "orcl";
    String portNum = "1521";
@@ -21,6 +23,7 @@
    ResultSet rs;
    Class.forName("oracle.jdbc.driver.OracleDriver");
    conn = DriverManager.getConnection(url,user,pass);
+
    
    String id = request.getParameter("id");
    String password = request.getParameter("password");
@@ -36,7 +39,7 @@
    }
    else{
 	   HttpSession hs = request.getSession();
-		hs.setAttribute("id", rs.getString(1));
+		hs.setAttribute("id", rs.getString(5));
 		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
    }
    %>
