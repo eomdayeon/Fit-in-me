@@ -72,7 +72,7 @@
    conn = DriverManager.getConnection(url,user,pass);
    
    Integer para = Integer.parseInt(request.getParameter("catenumber"));
-   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS C, COSCATEGORY CO WHERE C.catenum = CO.catenumber AND CO.catenumber = "+ para;
+   String query = "SELECT Cosmetic_id, Cos_name, Price, Catenum FROM COSMETICS C, COSCATEGORY CO WHERE C.catenum = CO.catenumber AND CO.catenumber = "+ para;
   
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();
@@ -80,11 +80,12 @@
    ArrayList<Integer> cos_num = new ArrayList<>();
    ArrayList<String> cos_name = new ArrayList<>();
    ArrayList<Integer> price = new ArrayList<>();
-   
+   ArrayList<Integer> cate = new ArrayList<>();
    while(rs.next()){
       cos_num.add(rs.getInt(1));
       cos_name.add(rs.getString(2));
       price.add(rs.getInt(3));
+      cate.add(rs.getInt(4));
    }
    
    String querycate = "SELECT Catenumber,catename FROM COSCATEGORY ORDER BY catenumber ASC ";
@@ -164,7 +165,7 @@
                   </div>
                   <!-- Product actions-->
                   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                     <div class="text-center"> <a class="btn btn-outline-dark mt-auto" href="${pageContext.request.contextPath}/cos_detail/detail.jsp?num=<%out.print(cos_num.get(i));%>&cat=<%out.print(cat-1);%>">View options</a></div>
                   </div>
                </div>
             </div>

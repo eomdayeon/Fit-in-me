@@ -16,6 +16,7 @@
         
         <!-- Core theme CSS (includes Bootstrap)-->
    <!--      <link href="styles.css" rel="stylesheet" /> -->
+   	<link href="manager.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		
@@ -33,20 +34,12 @@
  
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="../recommend/recommend.jsp">Recommend Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
-<!--                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li> -->
+                        <li class="nav-item"><a class="nav-link" href="../keyword/keyword.html">Keyword Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.html">Ingredient dictionary</a></li>
+
                     </ul>
                     <form class="d-flex">
-                        <input class="btn btn-outline-dark" type="button" onclick="location.href='product_register.html'" value="상품등록"/>
+                        <input class="btn btn-outline-dark" style="font-family: 'InfinitySans-RegularA1';" type="button" onclick="location.href='product_register.html'" value="상품등록"/>
                     </form>
                 </div>
             </div>
@@ -76,21 +69,27 @@
    Class.forName("oracle.jdbc.driver.OracleDriver");
    conn = DriverManager.getConnection(url,user,pass);
    
-   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS ";
-  
+   String query = "SELECT Cosmetic_id, Cos_name, Price, Catenum FROM COSMETICS ";
+   
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();
    
    ArrayList<Integer> cos_num = new ArrayList<>();
    ArrayList<String> cos_name = new ArrayList<>();
    ArrayList<Integer> price = new ArrayList<>();
+   ArrayList<Integer> cate = new ArrayList<>();
+   ArrayList<String> brand = new ArrayList<>();
+   int cat1=1, cat2=1, cat3=1,cat4=1,cat5=1,cat6=1,cat7=1,cat8=1,cat9=1;
+   int check= 1;
    
    while(rs.next()){
-	   cos_num.add(rs.getInt(1));
-	   cos_name.add(rs.getString(2));
-	   price.add(rs.getInt(3));
+      cos_num.add(rs.getInt(1));
+      cos_name.add(rs.getString(2));
+      price.add(rs.getInt(3));
+      cate.add(rs.getInt(4));
    }
    
+
    String querycate = "SELECT Catenumber,catename FROM COSCATEGORY ORDER BY catenumber ASC ";
    
    pstmt = conn.prepareStatement(querycate);
@@ -137,15 +136,58 @@
             
         </form>
         
-	<div class="container px-4 px-lg-5 mt-5">
-		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<%
+   <div class="container px-4 px-lg-5 mt-5">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+         <%
                 for(int i=0; i<cos_num.size(); i++){
-			%>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+         %>
+            <div class="col mb-5">
+               <div class="card h-100">
+                  <!-- Product image-->
+                  
+                  
+                  <%
+                     switch(cate.get(i)){
+                     case 1:
+
+                        out.println("<img class='card-img-top' src='../photo/1/"+cat1+".jpg' alt='...' />");
+                        check=cat1++;
+                        break;
+                     case 2:
+                        out.println("<img class='card-img-top' src='../photo/2/"+cat2+".jpg' alt='...' />");
+                        check=cat2++;
+                        break;   
+                     case 3:
+                        out.println("<img class='card-img-top' src='../photo/3/"+cat3+".jpg' alt='...' />");
+                        check=cat3++;
+                        break;
+                     case 4:
+                        out.println("<img class='card-img-top' src='../photo/4/"+cat4+".jpg' alt='...' />");
+                        check=cat4++;
+                        break;
+                     case 5:
+                        out.println("<img class='card-img-top' src='../photo/5/"+cat5+".jpg' alt='...'/>");
+                        cat5++;
+                        break;
+                     case 6:
+                        out.println("<img class='card-img-top' src='../photo/6/"+cat6+".jpg' alt='...'/>");
+                        check=cat6++;
+                        break;
+                     case 7:
+                        out.println("<img class='card-img-top' src='../photo/7/"+cat7+".jpg' alt='...' />");
+                        check=cat7++;
+                        break;
+                     case 8:
+                        out.println("<img class='card-img-top' src='../photo/8/"+cat8+".jpg' alt='...' />");
+                        check=cat8++;
+                        break;
+                     case 9:
+                        out.println("<img class='card-img-top' src='../photo/9/"+cat9+".jpg' alt='...' />");
+                        check=cat9++;
+                        break;
+                     }
+                  %>
+
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">
@@ -164,7 +206,9 @@
 						</div>
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                     <div class="text-center">
+                     <a class="btn btn-outline-dark mt-auto" href="${pageContext.request.contextPath}/cos_detail/detail.jsp?num=<%out.print(cos_num.get(i));%>&cat=<%out.print(check);%>">View options</a></div>
+                 						
 						</div>
 					</div>
 				</div>
