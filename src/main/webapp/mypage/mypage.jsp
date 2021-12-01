@@ -225,10 +225,11 @@
 	   			while(rs.next())
 	   			{
 	   				
-		      		out.println("<option value='"+rs.getString(1)+"'>"+"</option>");
+		      		out.println("<option name='color' value='"+rs.getString(1)+"'>"+rs.getString(1)+"</option>");
 	          
 	   			}
 				%>
+
                   <option>º½¿ú</option>
                   <option>¿©¸§Äð</option>
                   <option>°¡À»¿ú</option>
@@ -250,9 +251,7 @@
 	  
 	   			while(rs.next())
 	   			{
-	   				sex=rs.getString(1);
-		      		out.println("<option value='"+sex+"'>"+"</option>");
-	          
+	   				out.println("<option value='"+rs.getString(1)+"'>"+rs.getString(1)+"</option>");
 	   			}
 				%>
                   
@@ -275,8 +274,7 @@
 	  
 	   			while(rs.next())
 	   			{
-	   				skin=rs.getString(1);
-		      		out.println("<option value='"+skin+"'>"+"</option>");
+	   				out.println("<option value='"+rs.getString(1)+"'>"+rs.getString(1)+"</option>");
 	          
 	   			}
 				%>

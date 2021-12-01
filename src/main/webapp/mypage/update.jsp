@@ -20,6 +20,7 @@ Connection conn = null;
 PreparedStatement pstmt;
 Statement stmt=null;
 ResultSet rs;
+
 int res;
 Class.forName("oracle.jdbc.driver.OracleDriver");
 conn = DriverManager.getConnection(url,user,pass);
@@ -40,14 +41,12 @@ String phone=request.getParameter("phone");
 String birth=request.getParameter("birth");
 String sex=request.getParameter("sex");
    			
-sql = "UPDATE CUSTOMER SET Address = '" + address + "',Personal_Color='"+color+"',Skin_Type='"+skin+"',Customer_pwd='"+pwd+"',Customer_id='"+id+"',CusName='"+name+"',Phone='"+phone+"',Birth='"+birth+"',Sex='"+sex+"'WHERE Customer_id = '" + ID + "' ";
+sql = "UPDATE CUSTOMER SET Address = '" + address + "',Personal_Color='"+color+"',Skin_Type='"+skin+"',Customer_pwd='"+pwd+"',Customer_id='"+id+"',CusName='"+name+"',Phone='"+phone+"',Birth='"+birth+"',Sex='"+sex+"'WHERE Customer_id = " + ID;
 
 conn.commit();
 stmt = conn.createStatement();
 res=stmt.executeUpdate(sql);
 conn.commit();
-
-sess.invalidate();
 
 
 %>
