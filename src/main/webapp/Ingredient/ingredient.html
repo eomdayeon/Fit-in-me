@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ page language = "java" import ="java.text.*, java.sql.*, java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -58,35 +55,8 @@
                 </div>
             </div>
         </nav>
-        
-<%
-   String serverIP = "localhost";
-   String strSID = "orcl";
-   String portNum = "1521";
-   String user = "hr";
-   String pass = "hr";
-   String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
 
-   Connection conn = null;
-   PreparedStatement pstmt;
-   ResultSet rs;
-   Class.forName("oracle.jdbc.driver.OracleDriver");
-   conn = DriverManager.getConnection(url,user,pass);
-   
-	HttpSession sess = request.getSession();	 
-	String id = (String)session.getAttribute("id");
-	
-	
-   ArrayList<Integer> Inumber = new ArrayList<>();
-   ArrayList<String> Iname = new ArrayList<>();
-   ArrayList<String> grade_num = new ArrayList<>();
-   ArrayList<String> grade_name = new ArrayList<>();
- 
-  
-%>        
-        
-       
-        <!-- Page Content-->
+
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
         <br>
@@ -125,107 +95,43 @@
                 </div>
                 
             </div>
+
+
 			
-			<% 
-				String grade= request.getParameter("grade"); 
-				String gradename = "";
-				if(grade.equals("1")) gradename = "낮은 위험도";
-				else if(grade.equals("2"))gradename = "중간 위험도";
-				else gradename = "높은 위험도";
-				
-			  String query =  "SELECT Inumber, Iname, grade_num, grade_name "
-			  		+ "FROM INGREDIENT "
-			  		+ "WHERE Grade_name IN(SELECT Grade_name FROM INGREDIENT WHERE Grade_name='"+ gradename +"')";
-			   pstmt = conn.prepareStatement(query);
-			   rs = pstmt.executeQuery();
-		       while(rs.next()){
-		    	   Inumber.add(rs.getInt(1));
-		    	   Iname.add(rs.getString(2));
-		    	   grade_num.add(rs.getString(3));
-		    	   grade_name.add(rs.getString(4));
-		       }
-			%>
-			
-			<table class="table">
-			  <thead class="thead-dark" style = "font-family: 'InfinitySans-RegularA1';" >
-			    <tr >
-			      <th scope="col" >성분번호</th>
-			      <th scope="col">성분이름</th>
-			      <th scope="col">성분등급</th>
-			      <th scope="col">성분위험도</th>
-			    </tr>
-			  </thead>
-			  <tbody style="font-family: 'InfinitySans-RegularA1';">
-			  
-			  	<%
-                for(int i=0; i<Inumber.size(); i++){
-				%>
-			    <tr>
-			      <th scope="row"><%out.print(Inumber.get(i));%></th>
-			      <td><%out.print(Iname.get(i));%></td>
-			      <td><%out.print(grade_num.get(i));%></td>
-			      <td><%out.print(grade_name.get(i));%></td>
-			    </tr>
+<!-- 			  <form action = "ingredient.jsp" method = "POST">
+			  <div class="form-row align-items-center">
+			    <div class="col-auto my-1">
+			      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+			      <select name = "grade2" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="font-family: 'InfinitySans-RegularA1';">
+			        <option selected >성분 등급 선택</option>
+			        <option value="1">1</option>
+			        <option value="2">2</option>
+			        <option value="3">3</option>
+			        <option value="4">4</option>
+			        <option value="5">5</option>
+			        <option value="6">6</option>
+			        <option value="7">7</option>
+			        <option value="8">8</option>
+			        <option value="9">9</option>
+			      </select>
+			    </div>
 			    
-			   	<%
-			   	}
-			   	%> 
-			  </tbody>
-			</table>
-<%-- 
-       <div class="container px-4 px-lg-5 mt-5">
-		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<%
-                for(int i=0; i<cos_num.size(); i++){
-			%>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">
-								<%
-									out.print(cos_name.get(i));
-								%>
-								</h5>
-								<!-- Product price-->
-								<%
-									out.print(price.get(i));
-								%>
-								$
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-						</div>
-					</div>
-				</div>
-			<%
-                }
-			%>
+			    <div class="col-auto my-1">
+			      <div class="custom-control custom-checkbox mr-sm-2">
+			        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+			        <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+			      </div>
+			    </div>
+			    <div class="col-auto my-1">
+			      <button type="submit" class="btn btn-primary" style="font-family: 'InfinitySans-RegularA1';">확인하기</button>
+			    </div>
+			  </div>
+			  
+			</form> -->
+			<br></br>
 			</div>
-			</div>
-        </div> --%>
-        
-        
-        <!-- Footer-->
-        <br></br>
-        </div>
-       <footer class="py-5 bg-dark">
+			       <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
-</head>
-<body>
-
-</body>
-</html>
+			</body>
+			</html>

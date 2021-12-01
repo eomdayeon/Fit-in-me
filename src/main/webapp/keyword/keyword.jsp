@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Recommend cosmetic</title>
+        <title>Keyword Search Review</title>
         <!-- 폰트적용 -->
 		<style>
 		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Serif+KR&display=swap');
@@ -69,42 +69,67 @@
 
    Connection conn = null;
    PreparedStatement pstmt;
-   ResultSet rs;
+   ResultSet rs2;
    Class.forName("oracle.jdbc.driver.OracleDriver");
    conn = DriverManager.getConnection(url,user,pass);
    
 	HttpSession sess = request.getSession();	 
 	String id = (String)session.getAttribute("id");
 	
-	
-   ArrayList<Integer> Inumber = new ArrayList<>();
-   ArrayList<String> Iname = new ArrayList<>();
-   ArrayList<String> grade_num = new ArrayList<>();
-   ArrayList<String> grade_name = new ArrayList<>();
+   ArrayList<Integer> cos_num = new ArrayList<>();
+   ArrayList<String> cos_name = new ArrayList<>();
+   ArrayList<String> price = new ArrayList<>();
+   ArrayList<Integer> rate = new ArrayList<>();
+   
  
   
 %>        
         
-       
         <!-- Page Content-->
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
         <br>
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center  my-5"style=" margin-top: 45px;">
-				<div class="col-lg-6"><img class="img-fluid rounded mb-4 mb-lg-0" src="./ingredient.jpg" style=" width:100%; height:40%;" alt="..." /></div>
+				<div class="col-lg-6"><img class="img-fluid rounded mb-4 mb-lg-0" src="./keyword.png" style=" width:100%; height:40%;" alt="..." /></div>
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">WE PROVIDES INFORMATION ON INGREDIENTS</h1><br>
-                    <p style="font-family: 'InfinitySans-RegularA1'; margin-bottom: 20px;" >당신이 원하는 성분 위험도 및 성분 등급에 따른 성분 정보를 제공해드립니다. 📚💡
-            <form action = "ingredient.jsp" method = "POST">
+                    <h1 class="font-weight-light">PROVIDE INFORMATION BASED ON KEYWORD REVIEWS.</h1><br>
+                    <p style="font-family: 'InfinitySans-RegularA1'; margin-bottom: 20px;" >원하는 키워드 선택 시 관련 리뷰를 받은 화장품 정보를 출력해주어 리뷰를 기반으로 한 화장품 선택에 도움을 줍니다. 📍😊   
+            <form action = "keyword.jsp" method = "POST">
 			  <div class="form-row align-items-center" style="flex-wrap: nowrap; align-content: center; justify-content: center">
 			    <div class="col-auto my-1">
 			      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-			      <select name = "grade" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="font-family: 'InfinitySans-RegularA1';">
-			        <option selected >성분 위험도 선택</option>
-			        <option value="1">낮은 위험도</option>
-			        <option value="2">중간 위험도</option>
-			        <option value="3">높은 위험도</option>
+			      <select name = "key" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="font-family: 'InfinitySans-RegularA1';">
+			        <option selected >키워드 선택</option>
+			        <option value="1">각질</option>
+			        <option value="2">건조한</option>
+			        <option value="3">기름진</option>
+			        <option value="4">다크닝</option>
+			        <option value="5">다크서클</option>
+			        <option value="6">모공커버</option>
+			        <option value="7">민감/예민</option>
+			        <option value="8">밀착력</option>
+			        <option value="9">발림성좋은</option>
+			        <option value="10">보습력</option>
+			        <option value="11">뾰루지</option>
+			        <option value="12">속건조</option>
+			        <option value="13">요철</option>
+			        <option value="14">유분</option>
+			        <option value="15">자연스러움</option>
+			        <option value="16">잡티커버</option>
+			        <option value="17">좁쌀</option>
+			        <option value="18">주름케어</option>
+			        <option value="19">지속력</option>
+			        <option value="20">촉촉/수분</option>
+			        <option value="21">커버력</option>
+			        <option value="22">쿨링/시원한</option>
+			        <option value="23">트러블</option>
+			        <option value="24">향이_좋은</option>
+			        <option value="25">홍조</option>
+			        <option value="26">화농성</option>
+			        <option value="27">화사</option>
+			        <option value="28">화이트닝</option>
+			        <option value="29">흉터</option>
 			      </select>
 			    </div>
 			    
@@ -127,53 +152,50 @@
             </div>
 			
 			<% 
-				String grade= request.getParameter("grade"); 
-				String gradename = "";
-				if(grade.equals("1")) gradename = "낮은 위험도";
-				else if(grade.equals("2"))gradename = "중간 위험도";
-				else gradename = "높은 위험도";
-				
-			  String query =  "SELECT Inumber, Iname, grade_num, grade_name "
-			  		+ "FROM INGREDIENT "
-			  		+ "WHERE Grade_name IN(SELECT Grade_name FROM INGREDIENT WHERE Grade_name='"+ gradename +"')";
+			
+			String temp= request.getParameter("key"); 
+			String input = "";
+			if(temp.equals("1")) input = "각질";
+			else if(temp.equals("2"))input = "건조한";
+			else if(temp.equals("3"))input = "기름진";
+			else if(temp.equals("4"))input = "다크닝";
+			else if(temp.equals("5"))input = "다크서클";
+			else if(temp.equals("6"))input = "모공커버";
+			else if(temp.equals("7"))input = "민감/예민";
+			else if(temp.equals("8"))input = "밀착력";
+			else if(temp.equals("9"))input = "발림성좋은";
+			else if(temp.equals("10"))input = "보습력";
+			else if(temp.equals("11"))input = "뾰루지";
+			else if(temp.equals("12"))input = "속건조";
+			else if(temp.equals("13"))input = "요철";
+			else if(temp.equals("14"))input = "유분";
+			else if(temp.equals("15"))input = "자연스러움";
+			else if(temp.equals("16"))input = "잡티커버";
+			else if(temp.equals("17"))input = "좁쌀";
+			else if(temp.equals("18"))input = "주름케어";
+			else if(temp.equals("19"))input = "지속력";
+			else if(temp.equals("20"))input = "촉촉/수분";
+			else if(temp.equals("21"))input = "커버력";
+			else if(temp.equals("22"))input = "쿨링/시원한";
+			else if(temp.equals("23"))input = "트러블";
+			else if(temp.equals("24"))input = "향이_좋은";
+			else if(temp.equals("25"))input = "홍조";
+			else if(temp.equals("26"))input = "화농성";
+			else if(temp.equals("27"))input = "화사";
+			else if(temp.equals("28"))input = "화이트닝";
+			else input="흉터";	
+			  String query ="SELECT Cosmetic_id, Cos_name, price,ratings FROM RATING_KEYWORD K, RATING R, COSMETICS C WHERE K.Rid = R.Rating_id AND K.Cuid = R.Cus_id AND K.Coid = R.Cos_id  AND R.Cos_id = C.Cosmetic_id AND K.Keyword= '"+input+"'";
 			   pstmt = conn.prepareStatement(query);
-			   rs = pstmt.executeQuery();
-		       while(rs.next()){
-		    	   Inumber.add(rs.getInt(1));
-		    	   Iname.add(rs.getString(2));
-		    	   grade_num.add(rs.getString(3));
-		    	   grade_name.add(rs.getString(4));
+			   rs2 = pstmt.executeQuery();
+		       while(rs2.next()){
+		    	   cos_num.add(rs2.getInt(1));
+		    	   cos_name.add(rs2.getString(2));
+		    	   price.add(rs2.getString(3));
+		    	   rate.add(rs2.getInt(4));
 		       }
 			%>
 			
-			<table class="table">
-			  <thead class="thead-dark" style = "font-family: 'InfinitySans-RegularA1';" >
-			    <tr >
-			      <th scope="col" >성분번호</th>
-			      <th scope="col">성분이름</th>
-			      <th scope="col">성분등급</th>
-			      <th scope="col">성분위험도</th>
-			    </tr>
-			  </thead>
-			  <tbody style="font-family: 'InfinitySans-RegularA1';">
-			  
-			  	<%
-                for(int i=0; i<Inumber.size(); i++){
-				%>
-			    <tr>
-			      <th scope="row"><%out.print(Inumber.get(i));%></th>
-			      <td><%out.print(Iname.get(i));%></td>
-			      <td><%out.print(grade_num.get(i));%></td>
-			      <td><%out.print(grade_name.get(i));%></td>
-			    </tr>
-			    
-			   	<%
-			   	}
-			   	%> 
-			  </tbody>
-			</table>
-<%-- 
-       <div class="container px-4 px-lg-5 mt-5">
+<%-- 	<div class="container px-4 px-lg-5 mt-5">
 		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 			<%
                 for(int i=0; i<cos_num.size(); i++){
@@ -196,6 +218,10 @@
 									out.print(price.get(i));
 								%>
 								$
+								<%
+									out.print(rate.get(i));
+								%>
+								점
 							</div>
 						</div>
 						<!-- Product actions-->
@@ -207,9 +233,36 @@
 			<%
                 }
 			%>
-			</div>
-			</div>
+
+		</div>
         </div> --%>
+        
+			<table class="table">
+			  <thead class="thead-dark" style = "font-family: 'InfinitySans-RegularA1';" >
+			    <tr >
+			      <th scope="col" >제품번호</th>
+			      <th scope="col">제품이름</th>
+			      <th scope="col">제품가격</th>
+			      <th scope="col">제품점수</th>
+			    </tr>
+			  </thead>
+			  <tbody style="font-family: 'InfinitySans-RegularA1';">
+			  
+			  	<%
+                for(int i=0; i<cos_num.size(); i++){
+				%>
+			    <tr>
+			      <th scope="row"><%out.print(cos_num.get(i));%></th>
+			      <td><%out.print(cos_name.get(i));%></td>
+			      <td><%out.print(price.get(i));%>$</td>
+			      <td><%out.print(rate.get(i));%>점</td>
+			    </tr>
+			    
+			   	<%
+			   	}
+			   	%> 
+			  </tbody>
+			</table>        
         
         
         <!-- Footer-->
@@ -223,9 +276,4 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
-</html>
-</head>
-<body>
-
-</body>
 </html>

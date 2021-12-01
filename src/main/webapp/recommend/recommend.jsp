@@ -45,8 +45,8 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0"  style="    margin-left: 100px;margin-right: 120px;">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../main/defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="recommend.jsp">Recommend Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../keyword/keyword.html">Keyword Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.html">Ingredient dictionary</a></li>
                     </ul>
                  <form class="d-flex">
                         <button class="btn btn-outline-light" type="submit">
@@ -122,7 +122,7 @@
                 <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="./recommend.jpg" style=" width:100%; height:40%;" alt="..." /></div>
                 <div class="col-lg-5">
                     <h1 class="font-weight-light">WE RECOMMEND COSMETICS THAT YOU MIGHT LIKE!</h1><br>
-                    <p style="margin-bottom: 20px;">당신의 피부타입 및 퍼스널 컬러를 기반으로 하여 같은 피부타입 또는 퍼스널컬러를 지닌 다른 고객들의 구매를 분석하여 화장품을 추천해드립니다.</p>
+                    <p style="margin-bottom: 20px;">당신의 피부타입 및 퍼스널 컬러를 기반으로 하여 같은 피부타입 또는 퍼스널컬러를 지닌 다른 고객들의 구매를 분석하여 화장품을 추천해드립니다.⭐🌟⭐</p>
                     <a class="btn btn-primary" href="recommend.jsp" style="font-family: 'InfinitySans-RegularA1';">피부타입 별 추천 화장품!</a>
                     <a class="btn btn-primary" href="recommend2.jsp" style="font-family: 'InfinitySans-RegularA1';">퍼스널컬러 별 추천 화장품!</a>
                 </div>
