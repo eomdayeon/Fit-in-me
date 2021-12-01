@@ -47,11 +47,11 @@ stmt = conn.createStatement();
 res=stmt.executeUpdate(sql);
 conn.commit();
 
-out.println(window.location.href="mypage.jsp");
+sess.invalidate();
 
 
 %>
-<script>window.location.href="mypage.jsp"</script>
+
 
 </body>
 </html>
