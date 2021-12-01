@@ -21,12 +21,12 @@ PreparedStatement pstmt;
 Statement stmt=null;
 ResultSet rs;
 
-int res;
+int res=-1;
 Class.forName("oracle.jdbc.driver.OracleDriver");
 conn = DriverManager.getConnection(url,user,pass);
 
-HttpSession sess = request.getSession();	 
-String id = (String)session.getAttribute("id");
+HttpSession sess = request.getSession();    
+String hid = (String)session.getAttribute("id");
 
 
  
@@ -38,16 +38,19 @@ String pwd=request.getParameter("pwd");
 String ID=request.getParameter("id");
 String name=request.getParameter("name");
 String phone=request.getParameter("phone");
-String birth=request.getParameter("birth");
 String sex=request.getParameter("sex");
-   			
-sql = "UPDATE CUSTOMER SET Address = '" + address + "',Personal_Color='"+color+"',Skin_Type='"+skin+"',Customer_pwd='"+pwd+"',Customer_id='"+id+"',CusName='"+name+"',Phone='"+phone+"',Birth='"+birth+"',Sex='"+sex+"'WHERE Customer_id = " + ID;
 
-conn.commit();
+            
+sql = "UPDATE CUSTOMER SET Address = '" + address + "',Personal_Color='"+color+"',Skin_Type='"+skin+"',Customer_pwd='"+pwd+"',Customer_id='"+ID+"',CusName='"+name+"',Phone='"+phone+"',Sex='"+sex+"'WHERE Customer_id = " + hid;
+//out.print(test);
+//out.print(sql);
+
 stmt = conn.createStatement();
 res=stmt.executeUpdate(sql);
-conn.commit();
 
+if(res==1){
+   out.println("<script>alert('회원 정보 수정이 성공하였습니다.'); window.location.href='mypage.jsp'</script>");   
+}
 
 %>
 

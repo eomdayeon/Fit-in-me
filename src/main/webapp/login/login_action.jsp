@@ -30,7 +30,7 @@
    
    String query = "SELECT * FROM CUSTOMER WHERE customer_id = "+id+" AND customer_pwd = '"+ password+"'";
   
-   out.println(query);
+   /* out.println(query); */
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();
    
