@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page language = "java" import ="java.text.*, java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -31,12 +31,17 @@
    rs = pstmt.executeQuery();
    
    if(rs.next()==false){
-	   out.println("<script>alert('Àß¸øµÈ ¾ÆÀÌµğ¿Í ÆĞ½º¿öµå ÀÔ´Ï´Ù.'); history.back(); </script>");
+	   out.println("<script>alert('ì˜ëª»ëœ ì•„ì´ë””ì™€ íŒ¨ìŠ¤ì›Œë“œ ì…ë‹ˆë‹¤.'); history.back(); </script>");
    }
    else{
 	   HttpSession hs = request.getSession();
-		hs.setAttribute("id", rs.getString(1));
-		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
+		hs.setAttribute("id", rs.getString(5));
+		if(rs.getInt(11)==1){
+			out.println("<script>alert('ê´€ë¦¬ì ëª¨ë“œì…ë‹ˆë‹¤.'); window.location.href='../manager/defalt.jsp'</script>");	
+		}
+		else{
+			out.println("<script>window.location.href='../main/defalt.jsp'</script>");
+		}	
    }
    %>
    
