@@ -51,10 +51,10 @@
    res = pstmt.executeUpdate(sql);
    
    if(res==1){
-	   out.println("<script>alert('备概窍看嚼聪促.'); history.back(); </script>");
+	   out.println("<script>alert('구매하였습니다.'); history.back(); </script>");
    }
    else{
-	   out.println("<script>alert('备概甫 角菩窍看嚼聪促.'); history.back(); </script>");
+	   out.println("<script>alert('구매를 실패하였습니다.'); history.back(); </script>");
    }
 %>
 </body>
