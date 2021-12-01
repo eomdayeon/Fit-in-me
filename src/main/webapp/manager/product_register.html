@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="../main/favicon.ico" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="../cos_detail/detail_styles.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container px-5">Fit In Me</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Product register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="defalt.jsp">Cosmetic Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <form action="product_register.jsp" method="POST">
+        <section class="h-100">
+		<div class="container h-100">
+			<div class="row justify-content-md-center h-100">
+				<div class="card-wrapper">
+					<div class="card fat">
+						<div class="card-body">
+							<h4 class="card-title" style="font-family: 'InfinitySans-RegularA1';">상품 등록</h4>
+								<div class="form-group">
+									<label for="name" style="font-family: 'InfinitySans-RegularA1';">제품 이름</label>
+									<input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+								</div>
+								<div class="form-group">
+									<label for="type" style="font-family: 'InfinitySans-RegularA1';">제품 유형
+									</label>
+									<input id="type" type="text" class="form-control" name="type" required data-eye>
+								</div>
+								<div class="form-group">
+									<label for="price" style="font-family: 'InfinitySans-RegularA1';">가격
+									</label>
+									<input id="price" type="number" class="form-control" name="price" required data-eye>
+								</div>
+								<div class="form-group">
+									<label for="capacity" style="font-family: 'InfinitySans-RegularA1';">용량
+									</label>
+									<input id="capacity" type="text" class="form-control" name="capacity" required data-eye>
+								</div>
+								<div class="form-group">
+									<label for="date" style="font-family: 'InfinitySans-RegularA1';">유통기한
+									</label>
+									<input id="date" type="text" class="form-control" name="date" required data-eye>
+								</div>
+								<div class="form-group">
+									<label for="catenum" style="font-family: 'InfinitySans-RegularA1';">카테고리 넘버
+									</label>
+									<input id="catenum" type="number" class="form-control" name="catenum" required data-eye>
+								</div>
+								<div class="form-group">
+									<label for="Bnum" style="font-family: 'InfinitySans-RegularA1';">브랜드 넘버
+									</label>
+									<input id="Bnum" type="number" class="form-control" name="Bnum" required data-eye>
+								</div>
+
+								<div class="form-group m-0">
+									<button id="loginBtn" type="submit" class="btn btn-primary btn-block" style="font-family: 'InfinitySans-RegularA1';">
+										상품등록
+									</button>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</form>
+</body>
+</html>
