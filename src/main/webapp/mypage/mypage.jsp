@@ -84,19 +84,6 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">User Name</label>
-                <input type="text" class="form-control" id="name" placeholder="" value="" required>
-                <div class="invalid-feedback">
-                  Valid user name is required.
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="username">User ID</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">@</span>
-                </div>
                 <%
 				String serverIP = "localhost";
 	  			String strSID = "orcl";
@@ -115,23 +102,56 @@
 	   
 	   
 	   			String sql;
+	   			String name;
+	   			
+	   			sql="SELECT Cusname FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				name=rs.getString(1);
+		      		out.println("<input type='text' class='form-control' id='name' value='"+name+"' placeholder='User name' required>");
+	          
+	   			}
+				%>
+                
+                <div class="invalid-feedback">
+                  Valid user name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">User ID</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <%
+				
+	   			
+	   			String userid;
+	   			
 	   			sql="SELECT Customer_id FROM CUSTOMER WHERE Customer_id = "+id;
 	   			pstmt = conn.prepareStatement(sql);
 	   			rs = pstmt.executeQuery();
 	  
 	   			while(rs.next())
 	   			{
-		      		out.println(rs.getString(1));
+	   				userid=rs.getString(1);
+		      		out.println("<input type='text' class='form-control' id='useid' value='"+userid+"' placeholder='User ID' required>");
 	          
 	   			}
-			%>
-                <input type="text" class="form-control" id="username" placeholder="Username" required>
+				%>
+                
                
                 <div class="invalid-feedback" style="width: 100%;">
                   Your user ID is required.
                 </div>
               </div>
             </div>
+            
             
           
 </body>
@@ -142,7 +162,21 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="text" class="form-control" id="username" placeholder="Userpassword" required>
+                <%
+	   			String pwd;
+	   			
+	   			sql="SELECT Customer_pwd FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				pwd=rs.getString(1);
+		      		out.println("<input type='text' class='form-control' id='password' value='"+pwd+"' placeholder='User Password' required>");
+	          
+	   			}
+				%>
+               
                 <div class="invalid-feedback" style="width: 100%;">
                   Your user password is required.
                 </div>
@@ -151,7 +185,21 @@
 
             <div class="mb-3">
               <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+              <%
+	   			String ads;
+	   			
+	   			sql="SELECT Address FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				ads=rs.getString(1);
+		      		out.println("<input type='text' class='form-control' id='address' value='"+ads+"' placeholder='Address' required>");
+	          
+	   			}
+				%>
+             
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
@@ -159,7 +207,21 @@
 
             <div class="mb-3">
               <label for="address2">Phone Number <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="010-****-****">
+              <%
+	   			String phone;
+	   			
+	   			sql="SELECT Phone FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				phone=rs.getString(1);
+		      		out.println("<input type='text' class='form-control' id='phone' value='"+phone+"' placeholder='010-****-****' required>");
+	          
+	   			}
+				%>
+             
             </div>
 
             <div class="row">
