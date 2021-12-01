@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Checkout example for Bootstrap</title>
+    <title>My Page</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>Checkout form</h2>
+        <h2>You can modify your information!</h2>
         
       </div>
 
@@ -37,10 +37,50 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
-                <h6 class="my-0">Product name</h6>
-                <small class="text-muted">Brief description</small>
+                <h6 class="my-0">
+                <%
+				String serverIP = "localhost";
+	  			String strSID = "orcl";
+	   			String portNum = "1521";
+	  			String user = "hr";
+	   			String pass = "hr";
+	  			String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
+	   			Connection conn = null;
+	   			PreparedStatement pstmt;
+	   			ResultSet rs;
+	   			Class.forName("oracle.jdbc.driver.OracleDriver");
+	   			conn = DriverManager.getConnection(url,user,pass);
+	   
+	   			HttpSession sess = request.getSession();	 
+	   			String id = (String)session.getAttribute("id");
+	   
+	   
+	   			String sql;
+	   			String Name;
+	   			
+	   			sql="SELECT co.Cos_name FROM COSMETICS co,CUSTOMER cu,ORDERING o WHERE cu.Customer_id = "+id+"AND cu.Customer_id=o.Cus_id AND o.Cos_id=co.Cosmetic_id";
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				out.println(rs.getString(1));
+	   			}
+				%>
+                </h6>
+                
               </div>
-              <span class="text-muted">$12</span>
+              <span class="text-muted">
+              <%
+	   			sql="SELECT co.Price FROM COSMETICS co,CUSTOMER cu,ORDERING o WHERE cu.Customer_id = "+id+"AND cu.Customer_id=o.Cus_id AND o.Cos_id=co.Cosmetic_id";
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				out.println("$"+rs.getString(1));
+	   			}
+				%></span>
             </li>
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <div>
@@ -85,23 +125,6 @@
               <div class="col-md-6 mb-3">
                 <label for="firstName">User Name</label>
                 <%
-				String serverIP = "localhost";
-	  			String strSID = "orcl";
-	   			String portNum = "1521";
-	  			String user = "hr";
-	   			String pass = "hr";
-	  			String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
-	   			Connection conn = null;
-	   			PreparedStatement pstmt;
-	   			ResultSet rs;
-	   			Class.forName("oracle.jdbc.driver.OracleDriver");
-	   			conn = DriverManager.getConnection(url,user,pass);
-	   
-	   			HttpSession sess = request.getSession();	 
-	   			String id = (String)session.getAttribute("id");
-	   
-	   
-	   			String sql;
 	   			String name;
 	   			
 	   			sql="SELECT Cusname FROM CUSTOMER WHERE Customer_id = "+id;
@@ -228,7 +251,18 @@
               <div class="col-md-4 mb-3">
                 <label for="country">Personal Color</label>
                 <select class="custom-select d-block w-100" id="country" required>
-                  <option value="">º½¿ú</option>
+                <%
+	   			sql="SELECT Personal_color FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				
+		      		out.println("<option value='"+rs.getString(1)+"'>"+"</option>");
+	          
+	   			}
+				%>
                   <option>º½¿ú</option>
                   <option>¿©¸§Äð</option>
                   <option>°¡À»¿ú</option>
@@ -241,7 +275,21 @@
               <div class="col-md-4 mb-3">
                 <label for="state">Sex</label>
                 <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Male</option>
+                <%
+	   			String sex;
+	   			
+	   			sql="SELECT Sex FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				sex=rs.getString(1);
+		      		out.println("<option value='"+sex+"'>"+"</option>");
+	          
+	   			}
+				%>
+                  
                   <option>Male</option>
                   <option>Female</option>
                 </select>
@@ -252,7 +300,21 @@
               <div class="col-md-4 mb-3">
                 <label for="state">Skin Type</label>
                 <select class="custom-select d-block w-100" id="state" required>
-                  <option value="">Áö¼º</option>
+                <%
+	   			String skin;
+	   			
+	   			sql="SELECT Skin_Type FROM CUSTOMER WHERE Customer_id = "+id;
+	   			pstmt = conn.prepareStatement(sql);
+	   			rs = pstmt.executeQuery();
+	  
+	   			while(rs.next())
+	   			{
+	   				skin=rs.getString(1);
+		      		out.println("<option value='"+skin+"'>"+"</option>");
+	          
+	   			}
+				%>
+                  
                   <option>Áö¼º</option>
                   <option>Áß¼º</option>
                   <option>°Ç¼º</option>
