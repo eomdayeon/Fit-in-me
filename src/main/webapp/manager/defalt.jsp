@@ -8,13 +8,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Cosmetic Category</title>
+        <title>Shop Homepage - Cosmetic</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         
         <!-- Core theme CSS (includes Bootstrap)-->
+   <!--      <link href="styles.css" rel="stylesheet" /> -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 		
@@ -33,15 +34,19 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="../recommend/recommend.jsp">Recommend Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.jsp">Ingredient dictionary</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
+<!--                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li> -->
                     </ul>
-                    <form class="d-flex" action="../mypage/mypage.jsp">
-                        <button class="btn btn-outline-dark" type="submit" on click="window.location='mypage.jsp'">
-                            <!-- <i class="bi-cart-fill me-1"></i> -->
-                            MyPage
-<!--                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
-                        </button>
+                    <form class="d-flex">
+                        <input class="btn btn-outline-dark" type="button" onclick="location.href='product_register.html'" value="상품등록"/>
                     </form>
                 </div>
             </div>
@@ -71,8 +76,7 @@
    Class.forName("oracle.jdbc.driver.OracleDriver");
    conn = DriverManager.getConnection(url,user,pass);
    
-   Integer para = Integer.parseInt(request.getParameter("catenumber"));
-   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS C, COSCATEGORY CO WHERE C.catenum = CO.catenumber AND CO.catenumber = "+ para;
+   String query = "SELECT Cosmetic_id, Cos_name, Price FROM COSMETICS ";
   
    pstmt = conn.prepareStatement(query);
    rs = pstmt.executeQuery();

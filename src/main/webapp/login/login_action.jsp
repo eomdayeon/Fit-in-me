@@ -35,12 +35,17 @@
    rs = pstmt.executeQuery();
    
    if(rs.next()==false){
-	   out.println("<script>alert('잘못된 아이디와 패스워드 입니다.'); history.back();</script>");
+	   out.println("<script>alert('잘못된 아이디와 패스워드 입니다.'); history.back(); </script>");
    }
    else{
 	   HttpSession hs = request.getSession();
 		hs.setAttribute("id", rs.getString(5));
-		out.println("<script>window.location.href='../main/defalt.jsp'</script>");
+		if(rs.getInt(11)==1){
+			out.println("<script>alert('관리자 모드입니다.'); window.location.href='../manager/defalt.jsp'</script>");	
+		}
+		else{
+			out.println("<script>window.location.href='../main/defalt.jsp'</script>");
+		}	
    }
    %>
    

@@ -45,8 +45,8 @@
                             </ul>
                         </li> -->
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                    <form class="d-flex" action="../mypage/mypage.jsp">
+                        <button class="btn btn-outline-dark" type="submit" on click="window.location='mypage.jsp'">
                             <!-- <i class="bi-cart-fill me-1"></i> -->
                             MyPage
 <!--                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span> -->
