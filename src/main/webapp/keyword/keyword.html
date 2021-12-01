@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
-<%@ page language = "java" import ="java.text.*, java.sql.*, java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Recommend cosmetic</title>
+        <title>Keyword Search Review</title>
         <!-- 폰트적용 -->
 		<style>
 		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Serif+KR&display=swap');
@@ -45,7 +42,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0"  style="    margin-left: 100px;margin-right: 120px;">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../main/defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="../recommend/recommend.jsp">Recommend Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../keyword/keyword.html">Keyword Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="keyword.html">Keyword Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.html">Ingredient dictionary</a></li>
                     </ul>
                  <form class="d-flex">
@@ -58,53 +55,52 @@
                 </div>
             </div>
         </nav>
-        
-<%
-   String serverIP = "localhost";
-   String strSID = "orcl";
-   String portNum = "1521";
-   String user = "hr";
-   String pass = "hr";
-   String url = "jdbc:oracle:thin:@"+serverIP+":"+portNum+":"+strSID;
 
-   Connection conn = null;
-   PreparedStatement pstmt;
-   ResultSet rs;
-   Class.forName("oracle.jdbc.driver.OracleDriver");
-   conn = DriverManager.getConnection(url,user,pass);
-   
-	HttpSession sess = request.getSession();	 
-	String id = (String)session.getAttribute("id");
-	
-	
-   ArrayList<Integer> Inumber = new ArrayList<>();
-   ArrayList<String> Iname = new ArrayList<>();
-   ArrayList<String> grade_num = new ArrayList<>();
-   ArrayList<String> grade_name = new ArrayList<>();
- 
-  
-%>        
-        
-       
-        <!-- Page Content-->
+
         <!-- Page Content-->
         <div class="container px-4 px-lg-5">
         <br>
             <!-- Heading Row-->
             <div class="row gx-4 gx-lg-5 align-items-center  my-5"style=" margin-top: 45px;">
-				<div class="col-lg-6"><img class="img-fluid rounded mb-4 mb-lg-0" src="./ingredient.jpg" style=" width:100%; height:40%;" alt="..." /></div>
+				<div class="col-lg-6"><img class="img-fluid rounded mb-4 mb-lg-0" src="./keyword.png" style=" width:100%; height:40%;" alt="..." /></div>
                 <div class="col-lg-5">
-                    <h1 class="font-weight-light">WE PROVIDES INFORMATION ON INGREDIENTS</h1><br>
-                    <p style="font-family: 'InfinitySans-RegularA1'; margin-bottom: 20px;" >당신이 원하는 성분 위험도 및 성분 등급에 따른 성분 정보를 제공해드립니다. 📚💡
-            <form action = "ingredient.jsp" method = "POST">
+                    <h1 class="font-weight-light">PROVIDE INFORMATION BASED ON KEYWORD REVIEWS.</h1><br>
+                    <p style="font-family: 'InfinitySans-RegularA1'; margin-bottom: 20px;" >원하는 키워드 선택 시 관련 리뷰를 받은 화장품 정보를 출력해주어 리뷰를 기반으로 한 화장품 선택에 도움을 줍니다. 📍😊       
+                    <form action = "keyword.jsp" method = "POST">
 			  <div class="form-row align-items-center" style="flex-wrap: nowrap; align-content: center; justify-content: center">
 			    <div class="col-auto my-1">
 			      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-			      <select name = "grade" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="font-family: 'InfinitySans-RegularA1';">
-			        <option selected >성분 위험도 선택</option>
-			        <option value="1">낮은 위험도</option>
-			        <option value="2">중간 위험도</option>
-			        <option value="3">높은 위험도</option>
+			      <select name = "key" class="custom-select mr-sm-2" id="inlineFormCustomSelect" style="font-family: 'InfinitySans-RegularA1';">
+			        <option selected >키워드 선택</option>
+			        <option value="1">각질</option>
+			        <option value="2">건조한</option>
+			        <option value="기름진">기름진</option>
+			        <option value="다크닝">다크닝</option>
+			        <option value="다크서클">다크서클</option>
+			        <option value="모공커버">모공커버</option>
+			        <option value="민감/예민">민감/예민</option>
+			        <option value="밀착력">밀착력</option>
+			        <option value="발림성좋은">발림성좋은</option>
+			        <option value="보습력">보습력</option>
+			        <option value="뾰루지">뾰루지</option>
+			        <option value="속건조">속건조</option>
+			        <option value="요철">요철</option>
+			        <option value="유분">유분</option>
+			        <option value="자연스러움">자연스러움</option>
+			        <option value="잡티커버">잡티커버</option>
+			        <option value="좁쌀">좁쌀</option>
+			        <option value="주름케어">주름케어</option>
+			        <option value="지속력">지속력</option>
+			        <option value="촉촉/수분">촉촉/수분</option>
+			        <option value="커버력">커버력</option>
+			        <option value="쿨링/시원한">쿨링/시원한</option>
+			        <option value="트러블">트러블</option>
+			        <option value="향이_좋은">향이_좋은</option>
+			        <option value="홍조">홍조</option>
+			        <option value="화농성">화농성</option>
+			        <option value="화사">화사</option>
+			        <option value="화이트닝">화이트닝</option>
+			        <option value="흉터">흉터</option>
 			      </select>
 			    </div>
 			    
@@ -125,107 +121,11 @@
                 </div>
                 
             </div>
-			
-			<% 
-				String grade= request.getParameter("grade"); 
-				String gradename = "";
-				if(grade.equals("1")) gradename = "낮은 위험도";
-				else if(grade.equals("2"))gradename = "중간 위험도";
-				else gradename = "높은 위험도";
-				
-			  String query =  "SELECT Inumber, Iname, grade_num, grade_name "
-			  		+ "FROM INGREDIENT "
-			  		+ "WHERE Grade_name IN(SELECT Grade_name FROM INGREDIENT WHERE Grade_name='"+ gradename +"')";
-			   pstmt = conn.prepareStatement(query);
-			   rs = pstmt.executeQuery();
-		       while(rs.next()){
-		    	   Inumber.add(rs.getInt(1));
-		    	   Iname.add(rs.getString(2));
-		    	   grade_num.add(rs.getString(3));
-		    	   grade_name.add(rs.getString(4));
-		       }
-			%>
-			
-			<table class="table">
-			  <thead class="thead-dark" style = "font-family: 'InfinitySans-RegularA1';" >
-			    <tr >
-			      <th scope="col" >성분번호</th>
-			      <th scope="col">성분이름</th>
-			      <th scope="col">성분등급</th>
-			      <th scope="col">성분위험도</th>
-			    </tr>
-			  </thead>
-			  <tbody style="font-family: 'InfinitySans-RegularA1';">
-			  
-			  	<%
-                for(int i=0; i<Inumber.size(); i++){
-				%>
-			    <tr>
-			      <th scope="row"><%out.print(Inumber.get(i));%></th>
-			      <td><%out.print(Iname.get(i));%></td>
-			      <td><%out.print(grade_num.get(i));%></td>
-			      <td><%out.print(grade_name.get(i));%></td>
-			    </tr>
-			    
-			   	<%
-			   	}
-			   	%> 
-			  </tbody>
-			</table>
-<%-- 
-       <div class="container px-4 px-lg-5 mt-5">
-		<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-			<%
-                for(int i=0; i<cos_num.size(); i++){
-			%>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">
-								<%
-									out.print(cos_name.get(i));
-								%>
-								</h5>
-								<!-- Product price-->
-								<%
-									out.print(price.get(i));
-								%>
-								$
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
-						</div>
-					</div>
-				</div>
-			<%
-                }
-			%>
+
+			<br></br>
 			</div>
-			</div>
-        </div> --%>
-        
-        
-        <!-- Footer-->
-        <br></br>
-        </div>
-       <footer class="py-5 bg-dark">
+			       <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
-</head>
-<body>
-
-</body>
-</html>
+			</body>
+			</html>

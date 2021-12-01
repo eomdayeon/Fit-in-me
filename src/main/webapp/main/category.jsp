@@ -33,7 +33,7 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="../recommend/recommend.jsp">Recommend Product</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.jsp">Ingredient dictionary</a></li>
 
                     </ul>
                     <form class="d-flex">

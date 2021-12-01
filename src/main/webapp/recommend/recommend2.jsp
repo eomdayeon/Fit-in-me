@@ -45,8 +45,8 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0"  style="    margin-left: 100px;margin-right: 120px;">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../main/defalt.jsp">Cosmetic Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="recommend.jsp">Recommend Product</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Keyword Search</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Ingredient dictionary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../keyword/keyword.html">Keyword Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ingredient/ingredient.html">Ingredient dictionary</a></li>
                     </ul>
                  <form class="d-flex">
                         <button class="btn btn-outline-light" type="submit">
