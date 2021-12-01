@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page language = "java" import ="java.text.*, java.sql.*"%>
 <!DOCTYPE html>
 <html>
@@ -43,7 +43,7 @@
    }
    
    if(check==true){
-	   out.println("<script>alert('Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù.'); history.back();</script>");
+	   out.println("<script>alert('ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤.'); history.back();</script>");
    }
    else{
 	   sql = "INSERT INTO CUSTOMER VALUES (" + "'" + address + "'" + ", '" + personal_color+ "', " + "'" + skin_type
@@ -51,7 +51,7 @@
                + phone + "', " + 0 + ", '" + birth + "'" + ", '" + sex + "'," + 0 +")";
 	   System.out.println(sql);
 	   pstmt.executeUpdate(sql);
-	   out.println("<script>alert('È¸¿ø°¡ÀÔÀÌ ¼º°øÇÏ¿´½À´Ï´Ù.');  history.back()</script>");
+	   out.println("<script>alert('íšŒì›ê°€ì…ì´ ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.');  history.back()</script>");
    }
    
    %>
