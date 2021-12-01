@@ -89,6 +89,7 @@
    ArrayList<String> cos_name = new ArrayList<>();
    ArrayList<Integer> price = new ArrayList<>();
    ArrayList<Integer> cate = new ArrayList<>();
+   ArrayList<String> brand = new ArrayList<>();
    int cat1=1, cat2=1, cat3=1,cat4=1,cat5=1,cat6=1,cat7=1,cat8=1,cat9=1;
    int check= 1;
    
