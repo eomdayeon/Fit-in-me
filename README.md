@@ -3,7 +3,7 @@
 ## Database final project
 
 ## 나에게 꼭 맞는 화장품 - Fit In Me ##  
-  피부타입 별 추천 화장품 구매 사이트 <핏인미> DB team project
+  피부타입 별 추천 화장품 구매 사이트 <핏인미> Database Team Project
 
 ## 💡 About Project
  핏인미는 피부타입 별 맞춤 추천 기반 화장품 구매 사이트이다. DB를 이용하여 같은 피부타입과 퍼스널 컬러를
